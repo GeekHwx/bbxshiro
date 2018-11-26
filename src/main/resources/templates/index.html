@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>index</title>
+    <link rel="stylesheet" th:href="@{/js/lib/bootstrap/css/bootstrap.css}"/>
+    <script type="text/javascript" th:src="@{/js/lib/jquery/jquery-3.2.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/lib/bootstrap/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+欢迎【<a th:text="${session.user.viewName}"></a>】登陆系统！！！
+<hr/>
+<div shiro:hasPermission="add">
+    <a th:href="@{/add}">新增</a>
+    <a th:href="@{/update}">测试无权限的【修改】</a>
+</div>
+<div shiro:hasPermission="update">
+    <a th:href="@{/update}">修改</a>
+</div>
+<hr/>
+<a th:href="@{/logout}">注销登陆</a>
+
+</body>
+</html>
